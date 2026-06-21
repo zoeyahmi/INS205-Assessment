@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Webpage - Darlington Zoe Yahmi </title>
+    <style>
+        /* general styling for all 'body' elements */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 2em;
+        }
+
+        /* 'main section' div styling */
+        .main_section {
+            background: #dff0d8;
+            padding: 2em;
+            margin: 20px auto;
+            max-width: 800px;
+            border-left: 3px solid #3c763d;
+            border-radius: 6px;
+            color: #313030;
+        }
+
+        /* styling for heading text for distinct appearance */
+        h1 {
+            font-size: max(1.8rem, 3vw);
+            font-weight: bold;
+            color: #3c763d;
+            text-align: center;
+        }
+
+        /* styling to make all span elements bold for emphasis */
+        span {
+            font-weight: 600;
+        }
+
+        /* styling for all h2 elements within sections */
+        section h2 {
+            font-size: 1.8rem;
+            color: #424242;
+            margin-top: 1.5rem;
+        }
+
+        /* styling for 'about me' section */
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 2px solid rgba(60, 118, 61, 0.4);
+        }
+
+        /* styling for 'Send Email' button */
+        #send-btn {
+            color: white;
+            border: none;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #send-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* styling for elements with 'underlined' class name  */
+        .underlined {
+            text-decoration: underline;
+        }
+
+        /* styling for specific languages based on their class names */
+        .html {
+            color: #e34c26;
+        }
+
+        .css {
+            color: #1572b6;
+        }
+
+        .javascript {
+            color: #d4a017;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_section">
+        <!-- Main heading for the webpage -->
+        <h1>INS205 APPLICATION DESIGN AND DEVELOPMENT ASSESSMENT</h1>
+        <!-- Personal details section -->
+        <section>
+            <h2>About Me</h2>
+            <ul>
+                <li><span>Full Name:</span> Darlington Zoe Yahmi</li>
+                <li><span>Matric No.:</span> UJ/2024/NS/0259</li>
+                <li><span>Department:</span>Computer Science</li>
+                <li><span>Level:</span> 200</li>
+            </ul>
+        </section>
+        <!-- Course and project information section -->
+        <section>
+            <h2>About this page</h2>
+            <p>This is a simple static webpage developed as part of the <span>INS 205 - Application Design and
+                    Development</span> course. It
+                demonstrates basic HTML and CSS skills</p>
+            <p>The page is built using <span class="html underlined">HTML5</span>, which provides the structure, content
+                and
+                semantic organization of the
+                webpage.
+            </p>
+            <p><span class="css underlined">CSS</span> is used for minimal styling, controlling the layout, typography,
+                colors,
+                spacing and overall
+                visual appearance to the make the webpage more attractive.</p>
+            <p><span class="javascript underlined">JavaScript</span> is used to add interactivity and dynamic behavior
+                to the
+                webpage. In this project, it is used
+                to create a unique background-color hsl value for the 'Send email' button based on the student's matric
+                number.</p>
+        </section>
+        <!-- Contact section with 'Send Email' button -->
+        <section>
+            <h2>Contact Me</h2>
+            <p>For any inquiries, feel free to contact me :)</p>
+            <a href="mailto:2024ns0259@unijos.edu.ng">
+                <button id="send-btn">Send Email</button>
+                <!-- adding'send-btn'id to be referenced in the Javascript code -->
+            </a>
+        </section>
+    </div>
+    <script>
+        /* -------------------------------------------------------
+           Matric-number → button colour
+           Replace the matric value below with your own number.
+           ------------------------------------------------------- */
+        const matric = "UJ/2024/NS/0259"; // <-- CHANGE THIS TO YOUR MAT. NO.
+
+        /* CHANGE NOTHING BEYOND THIS POINT - CHANGE NOTHING BEYOND THIS POINT */
+
+        function hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+            }
+            return hash;
+        }
+
+        // Normalise input
+        const normalised = matric.trim().toUpperCase();
+
+        // Map the hash to a hue value between 0 and 359 degrees
+        const hue = hashString(normalised) % 360;
+
+        // Build an HSL colour: fixed saturation & lightness, varying hue
+        const buttonColour = `hsl(${hue}, 65%, 45%)`;
+
+        // Apply the colour to the Send Email button
+        document.getElementById("send-btn").style.background = buttonColour;
+    </script>
+</body>
+
+</html>
