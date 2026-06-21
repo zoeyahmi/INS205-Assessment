@@ -1,0 +1,2 @@
+This is a simple static webpage developed as part of the INS 205 - Application Design and Development course. It demonstrates basic HTML and CSS skills.
+HTML5 provides the structure, content and semantic organization of the webpage. CSS is used for minimal styling, controlling the layout, typography, colors, spacing and the overall visual appearance. JavaScript is used to add interactivity and dynamic behavior to the webpage.
